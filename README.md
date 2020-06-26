@@ -1,4 +1,4 @@
-IMMIGRATION CAPSTONE PROJECT Overview
+# IMMIGRATION CAPSTONE PROJECT Overview
 
 I94 Immigration Data: This data comes from the US National Tourism and Trade Office. A data dictionary is included in the work space. 
 This is where the data comes from. 
@@ -8,9 +8,9 @@ In this project four datasets are accessed to create a star schema with fact and
 Staging Data Uploaded on daily bases on S3 bucked after First stage of cleansing
 File named 'I94_SAS_Labels_Descriptions.SAS' Contians five lookups (Countries,port, Mode, Address,Visa) by divide the records to diffrent dataframe and load them to each table.
 
-the implemented star schema model found with project file named "ERD_Model.png"
+<b> the implemented star schema model found with project file named "ERD_Model.png"</b>
 
-Explore and Assess the Data
+### Explore and Assess the Data
 
 The immigration data set in SAS format from April 2016 titled 'i94_apr16_sub.sas7bdat' consists of data for temporary visits to the US from all over the world. The file titled 'I94_SAS_Labels_Descriptions.SAS' has an explaination of codes used in the immigration dataset. The immigration dateset has around a million rows. The original dataset has the following columns with the number of rows listed for each column.
 
@@ -21,7 +21,7 @@ The file titled 'airport-codes_csv.csv' consists of data in csv format. It lists
 the mapping sheet attached with project files named 'Mapping_sheet_Immigrants.xlsx' that contains datatypes and description for columns.
 
 
-ETL Process
+### ETL Process
 1. The Capstone Project.ipynb file shown below is run to gather and clean the immigration, demographics, airport and lookus datasets and prepare staging files for Redshift.
 
     The 'dwh.cfg' file is created with the secret and access keys to load files in S3.
@@ -67,7 +67,7 @@ ETL Process
 Finally all model lookup are generated from 'I94_SAS_Labels_Descriptions.SAS' file after cleansing, trim and remove not needed strings, then create file for each lookup in  'capstone-kobap' S3 bucket.
 at the end all lookup files are transformed to redshift cluster.
 
-####implemented quality checks####
+### implemented quality checks####
 1- trim values by trimming values in dataframe as shown below 
 addrl_df['addrl_ds']= addrl_df['addrl_ds'].str.strip()
 2- replace "" with none during write files in s3 bucket as shown below:
@@ -77,7 +77,7 @@ print('AIRPORT dataframe=', len(df_airport),' inserted records= ',count_list[4])
 4- analysis quality checks to can understand the data to implement the model
 by using df.info() for pandas dataframe and printschema for pyspark dataframe 
 
-Project Write Up
+### Project Write Up
 
 Big data tools were needed to process this data given its size. Specifically, I used the following tools in my project:
 
@@ -88,7 +88,7 @@ Big data tools were needed to process this data given its size. Specifically, I 
     
     redshift - my model created on redshift and data located in tables.
 
-## Purpose
+###  Purpose
 ### The resulting tables:
 Facts and Dimensions can be found in the (ERD_Model.png)
 The purpose of the model is to analyze the immigration data and the connections between the arrival ports and states where the immigrants settle (which can be analyzed in connection to the us_cities_demographics).
